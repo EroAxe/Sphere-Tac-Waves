@@ -14,6 +14,14 @@ func _ready():
 	$CanvasLayer/Button.connect("pressed", self, "replay")
 	
 
+func _input(event):
+	
+	if event.is_action("escape"):
+		
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		
+	
+
 func killed_enemy(xp, level):
 	
 	killed += 1
@@ -31,6 +39,8 @@ func killed_enemy(xp, level):
 func win(body):
 	
 	if "Player" in body.name:
+		
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		
 		Globals.goal += 2
 		
@@ -51,6 +61,8 @@ func win(body):
 	
 
 func replay():
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	get_tree().paused = false
 	

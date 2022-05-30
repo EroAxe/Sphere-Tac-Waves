@@ -4,6 +4,8 @@ extends Entity
 
 func _ready():
 	
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
 	Globals.player = self
 	
 	connect("dead", self, "restart")
@@ -47,6 +49,7 @@ func _physics_process(delta):
 	
 	move_and_slide(vel, Vector3.UP)
 	
+
 
 func _unhandled_input(event):
 	
