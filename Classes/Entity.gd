@@ -51,7 +51,14 @@ func _ready():
 #	animator.connect("animation_finished", self, "anim_over")
 	
 
-func on_hit(body):
+func on_hit(body, death = null):
+	
+	if death:
+		
+		emit_signal("dead", xp, lvl)
+		
+		return
+		
 	
 	if "Attack" in body.name:
 		

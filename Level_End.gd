@@ -4,8 +4,6 @@ extends Area
 
 var killed : int
 
-export var goal : int = 1
-
 
 func _ready():
 	
@@ -22,7 +20,7 @@ func killed_enemy(xp, level):
 	
 	$"../CanvasLayer/Label2".text = str(killed)
 	
-	if killed >= goal:
+	if killed >= Globals.goal:
 		
 		visible = true
 		
@@ -32,11 +30,24 @@ func killed_enemy(xp, level):
 
 func win(body):
 	
-	$CanvasLayer/Label.visible = true
-	
-	$CanvasLayer/Button.visible = true
-	
-	get_tree().paused = true
+	if "Player" in body.name:
+		
+		Globals.goal += 2
+		
+		Globals.multiplier += .25
+		
+		Globals.count *= 1.35
+		
+		
+		$CanvasLayer/Label.visible = true
+		
+		$CanvasLayer/Button.visible = true
+		
+		$CanvasLayer/Score.visible = true
+		
+		$CanvasLayer/Score.text = "Score: " + str(killed * Globals.multiplier)
+		
+		get_tree().paused = true
 	
 
 func replay():

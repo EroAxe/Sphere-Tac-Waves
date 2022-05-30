@@ -19,16 +19,21 @@ func _ready():
 
 func spawn():
 	
-	var rand = rand_range(0,spawns.size() - 1)
-	
-	$Timer.wait_time -= .2
-	
-	var spawn = get_node(spawns[rand])
-	
-	var inst = enemy.instance()
-	
-	inst.translation = spawn.translation
-	
-	
-	get_parent().add_child(inst)
+	for all in range(0,floor(Globals.count)):
+		
+		var rand = rand_range(0,spawns.size() - 1)
+		
+		$Timer.wait_time = Globals.time - .1
+		
+		var spawn = get_node(spawns[rand])
+		
+		var inst = enemy.instance()
+		
+		inst.translation = spawn.translation
+		
+		
+		get_parent().add_child(inst)
+		
+		Globals.count += .15
+		
 	

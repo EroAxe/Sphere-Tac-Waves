@@ -181,7 +181,7 @@ tracks/6/keys = {
 [node name="Player" type="KinematicBody"]
 collision_mask = 6
 script = ExtResource( 1 )
-hp = 40
+hp = 60
 grav = 26
 Animation_Player = NodePath("AnimationPlayer")
 attack_path = NodePath("Attack")
